@@ -1,0 +1,25 @@
+# Netlify 配置
+#
+# 本仓库是纯静态的：index.html 自带全部 CSS/JS/字体/图片，不需要构建。
+#
+# 关于「只发布 index.html」：
+#   Netlify 的 publish 字段指向的是**目录**，所以这里用标准的 "."。
+#   同目录下的辅助脚本靠下面的 ignore 规则排除——Netlify 会跳过匹配的文件，
+#   它们不会出现在公网上。
+
+[build]
+  publish = "."
+  command = ""
+  # 发布辅助脚本、配置文件、git 元数据都不上传
+  ignore = ".gitattributes .gitignore netlify.toml *.ps1 *.md .index.staged .netlify-hook"
+
+# 兜底：万一 ignore 未生效，这些路径也不该被当成页面访问
+[[redirects]]
+  from = "/*.ps1"
+  to = "/index.html"
+  status = 404
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"

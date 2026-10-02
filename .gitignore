@@ -1,0 +1,4 @@
+# 构建钩子地址、Netlify 本地状态都不该进版本库
+.netlify-hook
+.netlify/
+*.log
