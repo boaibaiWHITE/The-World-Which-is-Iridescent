@@ -14,28 +14,30 @@
   publish = "."
   command = ""
 
-# 兜底规则：force = true 保证在静态文件之前生效
+# 兜底规则：force = true 保证在静态文件之前生效。
+# 注意 to 要指向一个真实存在的文件——发布目录里只有 index.html，
+# 所以这里写 "/"，不要写 "/404.html"（那个文件不存在）。
 [[redirects]]
   from = "/*.ps1"
-  to = "/404.html"
+  to = "/"
   status = 404
   force = true
 
 [[redirects]]
   from = "/*.toml"
-  to = "/404.html"
+  to = "/"
   status = 404
   force = true
 
 [[redirects]]
   from = "/*.js"
-  to = "/404.html"
+  to = "/"
   status = 404
   force = true
 
 [[redirects]]
   from = "/*.md"
-  to = "/404.html"
+  to = "/"
   status = 404
   force = true
 
